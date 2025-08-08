@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_collections",
+  "info": {
+    "displayName": "Collection",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "collectionid": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

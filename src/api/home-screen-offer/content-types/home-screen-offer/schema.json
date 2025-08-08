@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_screen_offers",
+  "info": {
+    "singularName": "home-screen-offer",
+    "pluralName": "home-screen-offers",
+    "displayName": "Home Screen Offer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text1": {
+      "type": "string"
+    },
+    "minimumCartValue": {
+      "type": "string"
+    },
+    "text2": {
+      "type": "string"
+    },
+    "couponCode": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "all_offer_pages",
+  "info": {
+    "singularName": "offer-pages",
+    "pluralName": "all-offer-pages",
+    "displayName": "OfferPages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "offerPageId": {
+      "type": "string",
+      "required": true
+    },
+    "item": {
+      "type": "component",
+      "component": "shared.page-item",
+      "repeatable": true
+    }
+  }
+}

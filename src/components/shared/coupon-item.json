@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_coupon_items",
+  "info": {
+    "displayName": "CouponItem",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

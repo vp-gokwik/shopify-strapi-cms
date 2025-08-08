@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "all_checkout_offers",
+  "info": {
+    "singularName": "checkout-offers",
+    "pluralName": "all-checkout-offers",
+    "displayName": "CheckoutOffers"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "CouponItem": {
+      "type": "component",
+      "component": "shared.coupon-item",
+      "repeatable": true
+    }
+  }
+}

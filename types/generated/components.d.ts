@@ -1,75 +1,67 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SharedMedia extends Struct.ComponentSchema {
-  collectionName: 'components_shared_media';
+export interface SharedCollection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_collections';
   info: {
-    displayName: 'Media';
-    icon: 'file-video';
+    displayName: 'Collection';
+    icon: 'bulletList';
   };
   attributes: {
-    file: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    collectionid: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String;
   };
 }
 
-export interface SharedQuote extends Struct.ComponentSchema {
-  collectionName: 'components_shared_quotes';
+export interface SharedCouponItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_coupon_items';
   info: {
-    displayName: 'Quote';
-    icon: 'indent';
+    displayName: 'CouponItem';
+    icon: 'crown';
   };
   attributes: {
-    body: Schema.Attribute.Text;
+    body: Schema.Attribute.String & Schema.Attribute.Required;
+    code: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedImageBanner extends Struct.ComponentSchema {
+  collectionName: 'components_shared_image_banners';
+  info: {
+    displayName: 'imageBanner';
+    icon: 'picture';
+  };
+  attributes: {
+    src: Schema.Attribute.Media<'images' | 'files'>;
+    type: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'imageBanner'>;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface SharedPageItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_page_items';
+  info: {
+    displayName: 'PageItem';
+    icon: 'bulletList';
+  };
+  attributes: {
     title: Schema.Attribute.String;
-  };
-}
-
-export interface SharedRichText extends Struct.ComponentSchema {
-  collectionName: 'components_shared_rich_texts';
-  info: {
-    description: '';
-    displayName: 'Rich text';
-    icon: 'align-justify';
-  };
-  attributes: {
-    body: Schema.Attribute.RichText;
-  };
-}
-
-export interface SharedSeo extends Struct.ComponentSchema {
-  collectionName: 'components_shared_seos';
-  info: {
-    description: '';
-    displayName: 'Seo';
-    icon: 'allergies';
-    name: 'Seo';
-  };
-  attributes: {
-    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
-  };
-}
-
-export interface SharedSlider extends Struct.ComponentSchema {
-  collectionName: 'components_shared_sliders';
-  info: {
-    description: '';
-    displayName: 'Slider';
-    icon: 'address-book';
-  };
-  attributes: {
-    files: Schema.Attribute.Media<'images', true>;
+    type: Schema.Attribute.Enumeration<
+      ['imageBanner', 'offerTimer', 'collection']
+    >;
+    url: Schema.Attribute.String;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'shared.media': SharedMedia;
-      'shared.quote': SharedQuote;
-      'shared.rich-text': SharedRichText;
-      'shared.seo': SharedSeo;
-      'shared.slider': SharedSlider;
+      'shared.collection': SharedCollection;
+      'shared.coupon-item': SharedCouponItem;
+      'shared.image-banner': SharedImageBanner;
+      'shared.page-item': SharedPageItem;
     }
   }
 }

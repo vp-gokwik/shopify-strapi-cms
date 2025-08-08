@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_page_items",
+  "info": {
+    "displayName": "PageItem",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "imageBanner",
+        "offerTimer",
+        "collection"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
