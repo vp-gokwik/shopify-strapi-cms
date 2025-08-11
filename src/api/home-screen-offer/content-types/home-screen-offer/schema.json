@@ -12,16 +12,24 @@
   "pluginOptions": {},
   "attributes": {
     "text1": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "minimumCartValue": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "text2": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "couponCode": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "offerUrl": {
+      "type": "string",
+      "required": true
     }
   }
 }

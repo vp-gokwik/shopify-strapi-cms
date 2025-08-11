@@ -414,7 +414,7 @@ export interface ApiHomeScreenOfferHomeScreenOffer
     draftAndPublish: true;
   };
   attributes: {
-    couponCode: Schema.Attribute.String;
+    couponCode: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -424,10 +424,11 @@ export interface ApiHomeScreenOfferHomeScreenOffer
       'api::home-screen-offer.home-screen-offer'
     > &
       Schema.Attribute.Private;
-    minimumCartValue: Schema.Attribute.String;
+    minimumCartValue: Schema.Attribute.String & Schema.Attribute.Required;
+    offerUrl: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    text1: Schema.Attribute.String;
-    text2: Schema.Attribute.String;
+    text1: Schema.Attribute.String & Schema.Attribute.Required;
+    text2: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
