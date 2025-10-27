@@ -4,9 +4,12 @@ module.exports = {
       .query("api::home-screen-offer.home-screen-offer")
       .findOne();
 
-    const checkout = await strapi.db
-      .query("api::checkout-offers.checkout-offers")
-      .findOne();
+    const checkout = await strapi.entityService.findMany(
+      "api::checkout-offers.checkout-offers",
+      {
+        populate: "*",
+      }
+    );
 
     // ✅ Parse pagination parameters (compatible with ?pagination[page]=1&pagination[pageSize]=10)
     const { page = 1, pageSize = 10 } = ctx.query.pagination || ctx.query;
