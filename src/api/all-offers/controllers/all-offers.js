@@ -1,27 +1,35 @@
 module.exports = {
   async getAll(ctx) {
-    const home = await strapi.db
-      .query("api::home-screen-offer.home-screen-offer")
-      .findOne();
-
-    const checkout = await strapi.entityService.findMany(
-      "api::checkout-offers.checkout-offers",
+    // Home screen offer
+    const homeEntries = await strapi.entityService.findMany(
+      "api::home-screen-offer.home-screen-offer",
       {
         populate: "*",
+        limit: 1,
       }
     );
+    const home = homeEntries?.[0] || null;
 
-    // ✅ Parse pagination parameters (compatible with ?pagination[page]=1&pagination[pageSize]=10)
+    // Checkout offer with CouponItem populated
+    const checkoutEntries = await strapi.entityService.findMany(
+      "api::checkout-offers.checkout-offers",
+      {
+        populate: {
+          CouponItem: true, // 👈 ensures relation/component is included
+        },
+        limit: 1,
+      }
+    );
+    const checkout = checkoutEntries?.[0] || null;
+
+    // Offer pages pagination
     const { page = 1, pageSize = 10 } = ctx.query.pagination || ctx.query;
-
     const pageNum = Number(page);
     const limit = Number(pageSize);
     const start = (pageNum - 1) * limit;
 
-    // ✅ Get total count
     const total = await strapi.db.query("api::offer-pages.offer-pages").count();
 
-    // ✅ Get paginated records
     const allPages = await strapi.entityService.findMany(
       "api::offer-pages.offer-pages",
       {
@@ -31,7 +39,6 @@ module.exports = {
       }
     );
 
-    // ✅ Compute pagination metadata
     const pageCount = Math.ceil(total / limit);
 
     ctx.body = {
